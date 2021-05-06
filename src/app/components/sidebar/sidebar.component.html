@@ -18,7 +18,7 @@
       class="md:block text-left md:pb-2 text-gray-700 mr-0 inline-block whitespace-no-wrap text-sm uppercase font-bold p-4 px-0"
     >
       <span class="block sm:hidden">
-        Tailwind Angular
+        Indima Yethu
       </span>
       <span class="hidden sm:block">
        Indima Yethu
@@ -48,7 +48,7 @@
               [routerLink]="['/']"
               class="md:block text-left md:pb-2 text-gray-700 mr-0 inline-block whitespace-no-wrap text-sm uppercase font-bold p-4 px-0"
             >
-              Notus Angular
+              Indima Yethu
             </a>
           </div>
           <div class="w-6/12 flex justify-end">
@@ -128,9 +128,9 @@
           </a>
         </li>
 
-        <!-- <li class="items-center">
+        <li class="items-center">
           <a
-            [routerLink]="['/admin/tables']"
+            [routerLink]="['/admin/publish']"
             class="text-xs uppercase py-3 font-bold block"
             routerLinkActive
             #adminTables="routerLinkActive"
@@ -144,9 +144,9 @@
               class="fas fa-table mr-2 text-sm"
               [ngClass]="adminTables.isActive ? 'opacity-75' : 'text-gray-400'"
             ></i>
-            Tables
+            Publish
           </a>
-        </li> -->
+        </li>
 
       </ul>
 
@@ -163,8 +163,9 @@
       <ul class="md:flex-col md:min-w-full flex flex-col list-none md:mb-4">
         <li class="items-center">
           <a
-            [routerLink]="['/auth/login']"
+            style="cursor: default;"
             class="text-gray-800 hover:text-gray-600 text-xs uppercase py-3 font-bold block"
+            (click)="logout()"
           >
             <i class="fas fa-fingerprint text-gray-400 mr-2 text-sm"></i>
             Logout

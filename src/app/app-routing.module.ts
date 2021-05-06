@@ -1,5 +1,8 @@
 import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
+import { BlogComponent } from "./console/blog/blog.component";
+import { PublishComponent } from "./console/publish/publish.component";
+import { ViewPostComponent } from "./console/view-post/view-post.component";
 import { AdminAuthGuard } from "./guards/admin-auth.guard";
 import { AuthGuard } from "./guards/auth.guard";
 import { RegisterGuard } from "./guards/register.guard";
@@ -27,10 +30,11 @@ const routes: Routes = [
   // admin views
   {
     path: "admin",
-    component: AdminComponent,
+    component: AdminComponent, canActivate: [AuthGuard],
     children: [
       { path: "dashboard", component: DashboardComponent },
       { path: "settings", component: SettingsComponent },
+      { path: "publish", component: PublishComponent },
       { path: "tables", component: TablesComponent },
       { path: "maps", component: MapsComponent },
       { path: "", redirectTo: "dashboard", pathMatch: "full" },
@@ -48,6 +52,9 @@ const routes: Routes = [
   },
   // no layout views
   { path: "profile", component: ProfileComponent },
+  
+  { path: "post/:id", component: ViewPostComponent },
+  { path: "blog", component: BlogComponent },
   { path: "landing", component: LandingComponent },
   { path: "", component: IndexComponent },
   { path: "**", redirectTo: "", pathMatch: "full" },

@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-index-navbar",
@@ -7,7 +8,7 @@ import { Component, OnInit } from "@angular/core";
 export class IndexNavbarComponent implements OnInit {
   navbarOpen = false;
 
-  constructor() {}
+  constructor(private router: Router) {}
 
   ngOnInit(): void {}
 
@@ -17,7 +18,8 @@ export class IndexNavbarComponent implements OnInit {
 
 
   login(){
-    console.log('I am logging in...')
+    this.router.navigate(['/auth/login']);
+    console.info('Loggin...')
   }
 
 }

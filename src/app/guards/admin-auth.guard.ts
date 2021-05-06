@@ -21,10 +21,10 @@ export class AdminAuthGuard implements CanActivate {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     return  this.authService.appUser$.pipe(map((user: AppUser) => {
-      if (user && user.isPartner) {
+      if (user && user.isMentor) {
         return true;
       }
-      this.router.navigate(['/login'], { queryParams: { returnUrl: state.url } });
+      this.router.navigate(['/auth/login'], { queryParams: { returnUrl: state.url } });
       return false;
     }));
   };

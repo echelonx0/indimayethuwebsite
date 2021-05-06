@@ -61,6 +61,12 @@ import { PrivacyComponent } from './components/privacy/privacy.component';
 import { ClientServiceService } from "./services/client-service.service";
 import { SettingsService } from "./services/settings.service";
 import { AuthService } from "./services/auth.service";
+import { PublishComponent } from './console/publish/publish.component';
+
+import { QuillModule } from "ngx-quill";
+
+import { BlogComponent } from './console/blog/blog.component';
+import { ViewPostComponent } from './console/view-post/view-post.component';
 
 @NgModule({
   declarations: [
@@ -99,6 +105,9 @@ import { AuthService } from "./services/auth.service";
     LandingComponent,
     ProfileComponent,
     PrivacyComponent,
+    PublishComponent,
+    BlogComponent,
+    ViewPostComponent,
   ],
   imports: [BrowserModule, AppRoutingModule,
     AngularFireAuthModule,
@@ -108,6 +117,7 @@ import { AuthService } from "./services/auth.service";
     AngularFirestoreModule,
     AngularFireStorageModule,
     AngularFireModule.initializeApp(environment.firebase),
+    QuillModule.forRoot(),
     AngularFireAuthModule,],
   providers: [ClientServiceService, AuthService, SettingsService],
   bootstrap: [AppComponent],
