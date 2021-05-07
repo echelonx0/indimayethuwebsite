@@ -33,4 +33,8 @@ export class IndexDropdownComponent implements OnInit {
       }
     );
   }
+
+  doLogout(){
+    console.log('Logging out...')
+  }
 }

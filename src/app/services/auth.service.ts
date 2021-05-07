@@ -20,7 +20,7 @@ export class AuthService {
       switchMap(user => {
         // If the user is logged in, return the user details.
         if (user) {
-          return this.afs.doc<AppUser>(`clients/${user.uid}`).valueChanges();
+          return this.afs.doc<AppUser>(`users/${user.uid}`).valueChanges();
         } else {
           // If the user is NOT logged in, return null.
           return of(null);

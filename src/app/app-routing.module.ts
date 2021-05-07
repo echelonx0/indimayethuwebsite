@@ -1,5 +1,6 @@
 import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
+import { PrivacyComponent } from "./components/privacy/privacy.component";
 import { BlogComponent } from "./console/blog/blog.component";
 import { PublishComponent } from "./console/publish/publish.component";
 import { ViewPostComponent } from "./console/view-post/view-post.component";
@@ -56,6 +57,7 @@ const routes: Routes = [
   { path: "post/:id", component: ViewPostComponent },
   { path: "blog", component: BlogComponent },
   { path: "landing", component: LandingComponent },
+  { path: "privacy", component: PrivacyComponent },
   { path: "", component: IndexComponent },
   { path: "**", redirectTo: "", pathMatch: "full" },
 ];

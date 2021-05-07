@@ -1,16 +1,17 @@
-export interface Clients {
+export interface User {
 
     id?: string;
     uid?: string;
     firstName?: string;
     lastName?: string;
     displayName?: string;
+    cityOfResidence?: string;
     email?: string;
     phoneNumber?: number;
-    accountBalance?: number; 
-    tokens?: number;
-    role?: number;
+    mentorID?: string; 
+    about?: string;
+    role?: string;
     cardNumber?: string;
-    transactionsDone?: number;
-    isPartner?: boolean;
+    journalEntries?: number;
+    isMentor?: boolean;
     }

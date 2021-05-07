@@ -9,16 +9,21 @@ import { AuthService } from "src/app/services/auth.service";
 })
 export class SidebarComponent implements OnInit {
   collapseShow = "hidden";
+  isMentor: boolean = false;
+
   constructor(    private authService: AuthService,
     private router: Router,) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+
+    this.authService.appUser$.subscribe(appUser => this.isMentor = appUser.isMentor);
+
+  }
   toggleCollapseShow(classes) {
     this.collapseShow = classes;
   }
 
   logout(){
-    console.log('Logging out...')
     this.authService.logout();
     this.router.navigate(['/']);
   }

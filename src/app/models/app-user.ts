@@ -3,4 +3,5 @@ export class AppUser {
     lastName?: string;
     email?: string;
     isMentor?: boolean;
+    uid?: string;
 }

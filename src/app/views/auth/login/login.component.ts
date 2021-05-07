@@ -23,7 +23,7 @@ export class LoginComponent implements OnInit {
         //   cssClass: 'alert-success', timeout: 4000
         // });
 
-        this.router.navigate(['/admin/dashboard']);
+        this.router.navigate(['/admin/settings']);
       })
       .catch(err => {
         // this.flashMessage.show(err.message, {
