@@ -1,4 +1,4 @@
-<app-auth-navbar></app-auth-navbar>
+<app-index-navbar></app-index-navbar>
 <main>
   <div
     class="relative pt-16 pb-32 flex content-center items-center justify-center min-h-screen-75"
@@ -19,7 +19,7 @@
         <div class="w-full lg:w-6/12 px-4 ml-auto mr-auto text-center">
           <div class="pr-12">
             <h1 class="text-white font-semibold text-5xl">
-                {{publication.title}}
+                {{publication.title}} 
             </h1>
             <p class="mt-4 text-lg text-gray-300">
                 {{publication.subject}}
@@ -68,14 +68,14 @@
           <h3 class="text-3xl mb-2 font-semibold leading-normal">
            Article category:  {{publication.category}}
           </h3>
-          <div *ngIf="publication">
+          <div *ngIf="publication" class="mb-4">
 
             <div [innerHTML]="publication.post"></div>
         
         
         </div>
-          <a [routerLink]="['/']" class="font-bold text-gray-800 mt-8">
-            Check Notus Angular!
+          <a [routerLink]="['/blog']" class="font-bold text-gray-800 mt-8">
+            Back
           </a>
         </div>
 
