@@ -1,5 +1,6 @@
 import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
+import { AddProjectComponent } from "./community/add-project/add-project.component";
 import { PrivacyComponent } from "./components/privacy/privacy.component";
 import { BlogComponent } from "./console/blog/blog.component";
 import { PublishComponent } from "./console/publish/publish.component";
@@ -11,6 +12,9 @@ import { RegisterGuard } from "./guards/register.guard";
 // layouts
 import { AdminComponent } from "./layouts/admin/admin.component";
 import { AuthComponent } from "./layouts/auth/auth.component";
+import { MentoringComponent } from "./layouts/mentoring/mentoring.component";
+import { MentorsComponent } from "./peer/mentors/mentors.component";
+import { CompletedComponent } from "./shared/completed/completed.component";
 
 // admin views
 import { DashboardComponent } from "./views/admin/dashboard/dashboard.component";
@@ -33,14 +37,32 @@ const routes: Routes = [
     path: "admin",
     component: AdminComponent, canActivate: [AuthGuard],
     children: [
-      { path: "dashboard", component: DashboardComponent },
-      { path: "settings", component: SettingsComponent },
+      // { path: "dashboard", component: DashboardComponent },
+      { path: "dashboard", component: SettingsComponent },
       { path: "publish", component: PublishComponent },
       { path: "tables", component: TablesComponent },
       { path: "maps", component: MapsComponent },
+      { path: "done", component: CompletedComponent },
+      
+      { path: "add-project", component: AddProjectComponent },
       { path: "", redirectTo: "dashboard", pathMatch: "full" },
     ],
   },
+
+
+    // admin views
+    {
+      path: "mentoring",
+      component: MentoringComponent, canActivate: [AuthGuard],
+      children: [
+        // { path: "dashboard", component: DashboardComponent },
+      
+        { path: "chat", component: MentorsComponent },
+        { path: "", redirectTo: "chat", pathMatch: "full" },
+      ],
+    },
+
+
   // auth views
   {
     path: "auth",
@@ -53,6 +75,7 @@ const routes: Routes = [
   },
   // no layout views
   { path: "profile", component: ProfileComponent },
+
   
   { path: "post/:id", component: ViewPostComponent },
   { path: "blog", component: BlogComponent },

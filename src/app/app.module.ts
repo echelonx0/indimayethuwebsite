@@ -67,6 +67,14 @@ import { QuillModule } from "ngx-quill";
 
 import { BlogComponent } from './console/blog/blog.component';
 import { ViewPostComponent } from './console/view-post/view-post.component';
+import { SentinelComponent } from './sentinel/sentinel/sentinel.component';
+import { CommunityServiceComponent } from './community/community-service/community-service.component';
+import { AddProjectComponent } from './community/add-project/add-project.component';
+import { CompletedComponent } from './shared/completed/completed.component';
+import { MentorsComponent } from './peer/mentors/mentors.component';
+import { MentoringComponent } from './layouts/mentoring/mentoring.component';
+import { HeaderMentoringComponent } from "./components/headers/header-mentoring/header-mentoring.component";
+import { RespondComponent } from './peer/respond/respond.component';
 
 @NgModule({
   declarations: [
@@ -108,6 +116,15 @@ import { ViewPostComponent } from './console/view-post/view-post.component';
     PublishComponent,
     BlogComponent,
     ViewPostComponent,
+    SentinelComponent,
+    CommunityServiceComponent,
+    AddProjectComponent,
+    CompletedComponent,
+    MentorsComponent,
+    MentoringComponent,
+    HeaderMentoringComponent,
+    RespondComponent
+    
   ],
   imports: [BrowserModule, AppRoutingModule,
     AngularFireAuthModule,

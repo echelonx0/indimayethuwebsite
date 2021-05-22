@@ -108,7 +108,7 @@
 
         <li class="items-center">
           <a
-            [routerLink]="['/admin/settings']"
+            [routerLink]="['/admin/add-project']"
             class="text-xs uppercase py-3 font-bold block"
             routerLinkActive
             #adminSettings="routerLinkActive"
@@ -124,7 +124,7 @@
                 adminSettings.isActive ? 'opacity-75' : 'text-gray-400'
               "
             ></i>
-            Settings
+            New Project
           </a>
         </li>
 
@@ -145,6 +145,26 @@
               [ngClass]="adminTables.isActive ? 'opacity-75' : 'text-gray-400'"
             ></i>
             Publish
+          </a>
+        </li>
+
+        <li class="items-center">
+          <a
+            [routerLink]="['/mentoring/chat']"
+            class="text-xs uppercase py-3 font-bold block"
+            routerLinkActive
+            #adminTables="routerLinkActive"
+            [ngClass]="
+              adminTables.isActive
+                ? 'text-red-600 hover:text-red-700'
+                : 'text-gray-800 hover:text-gray-600'
+            "
+          >
+            <i
+              class="fas fa-table mr-2 text-sm"
+              [ngClass]="adminTables.isActive ? 'opacity-75' : 'text-gray-400'"
+            ></i>
+            Chat
           </a>
         </li>
 
