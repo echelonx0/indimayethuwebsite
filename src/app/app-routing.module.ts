@@ -1,7 +1,9 @@
 import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
 import { AddProjectComponent } from "./community/add-project/add-project.component";
+import { JournalDiaryComponent } from "./components/journal-diary/journal-diary.component";
 import { PrivacyComponent } from "./components/privacy/privacy.component";
+import { ViewJournalDiaryComponent } from "./components/view-journal-diary/view-journal-diary.component";
 import { BlogComponent } from "./console/blog/blog.component";
 import { PublishComponent } from "./console/publish/publish.component";
 import { ViewPostComponent } from "./console/view-post/view-post.component";
@@ -13,7 +15,9 @@ import { RegisterGuard } from "./guards/register.guard";
 import { AdminComponent } from "./layouts/admin/admin.component";
 import { AuthComponent } from "./layouts/auth/auth.component";
 import { MentoringComponent } from "./layouts/mentoring/mentoring.component";
+import { ChatComponent } from "./peer/chat/chat.component";
 import { MentorsComponent } from "./peer/mentors/mentors.component";
+import { RespondComponent } from "./peer/respond/respond.component";
 import { CompletedComponent } from "./shared/completed/completed.component";
 
 // admin views
@@ -43,7 +47,8 @@ const routes: Routes = [
       { path: "tables", component: TablesComponent },
       { path: "maps", component: MapsComponent },
       { path: "done", component: CompletedComponent },
-      
+      { path: "diary", component: JournalDiaryComponent },
+      { path: "view-diary/:id", component: ViewJournalDiaryComponent },
       { path: "add-project", component: AddProjectComponent },
       { path: "", redirectTo: "dashboard", pathMatch: "full" },
     ],
@@ -58,7 +63,9 @@ const routes: Routes = [
         // { path: "dashboard", component: DashboardComponent },
       
         { path: "chat", component: MentorsComponent },
+        { path: "chatroom/:id", component: ChatComponent },
         { path: "", redirectTo: "chat", pathMatch: "full" },
+        { path: "respond/:id", component: RespondComponent },
       ],
     },
 
@@ -75,8 +82,6 @@ const routes: Routes = [
   },
   // no layout views
   { path: "profile", component: ProfileComponent },
-
-  
   { path: "post/:id", component: ViewPostComponent },
   { path: "blog", component: BlogComponent },
   { path: "landing", component: LandingComponent },

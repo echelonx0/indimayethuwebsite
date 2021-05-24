@@ -12,8 +12,16 @@ export class DataService {
 
   journalCollection: AngularFirestoreCollection<Journal>;
   moodsCollection: AngularFirestoreCollection<Moods>;
+  journalDoc: AngularFirestoreDocument<Journal>;
   journals: Observable<Journal[]>;
   moods: Observable<Moods[]>;
+
+  journal: Observable<Journal>;
+  mood: Observable<Moods>;
+
+  //Catch all
+  data: Observable<any>;
+  firebaseDoc: AngularFirestoreDocument<any>;
   
 
   constructor(private afs: AngularFirestore) { 
@@ -33,6 +41,39 @@ export class DataService {
     }));
 
     return this.journals; 
+  }
+
+
+  getSingleEntry(id: string): Observable<Journal> {
+    this.journalDoc = this.afs.doc<Journal>(`journal_entries/${id}`);
+    this.journal = this.journalDoc.snapshotChanges().pipe(map(action => {
+      if(action.payload.exists === false) {
+        return null;
+      } else {
+        const data = action.payload.data() as Journal;
+        //data.id = action.payload.id;
+        return data;
+      }
+    }));
+
+    return this.journal;
+  }
+
+  //This is a universal method to get any entry in any collection
+  //I pass in both the collection and the ID of the document
+  getEntry(id: string, collection: string): Observable<any> {
+    this.firebaseDoc = this.afs.doc<any>(`${collection}/${id}`);
+    this.data = this.firebaseDoc.snapshotChanges().pipe(map(action => {
+      if(action.payload.exists === false) {
+        return null;
+      } else {
+        const data = action.payload.data() as any;
+        //data.id = action.payload.id;
+        return data;
+      }
+    }));
+
+    return this.data;
   }
 
 

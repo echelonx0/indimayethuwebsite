@@ -75,6 +75,10 @@ import { MentorsComponent } from './peer/mentors/mentors.component';
 import { MentoringComponent } from './layouts/mentoring/mentoring.component';
 import { HeaderMentoringComponent } from "./components/headers/header-mentoring/header-mentoring.component";
 import { RespondComponent } from './peer/respond/respond.component';
+import { JournalDiaryComponent } from './components/journal-diary/journal-diary.component';
+import { ChatroomsComponent } from './peer/chatrooms/chatrooms.component';
+import { ChatComponent } from './peer/chat/chat.component';
+import { ViewJournalDiaryComponent } from './components/view-journal-diary/view-journal-diary.component';
 
 @NgModule({
   declarations: [
@@ -123,7 +127,11 @@ import { RespondComponent } from './peer/respond/respond.component';
     MentorsComponent,
     MentoringComponent,
     HeaderMentoringComponent,
-    RespondComponent
+    RespondComponent,
+    JournalDiaryComponent,
+    ChatroomsComponent,
+    ChatComponent,
+    ViewJournalDiaryComponent
     
   ],
   imports: [BrowserModule, AppRoutingModule,

@@ -11,7 +11,7 @@ import { CommunityProject } from '../models/community-projects';
 @Injectable({
   providedIn: 'root'
 })
-export class CommunityService {
+export class ChatService {
 
   communityProjectsCollection: AngularFirestoreCollection<any>;
   projectDoc: AngularFirestoreDocument<CommunityProject>;
@@ -21,7 +21,7 @@ export class CommunityService {
 
   //Requests for help
   messageDoc: AngularFirestoreDocument<any>;
-  helpMessagingCollection: AngularFirestoreCollection<any>;
+  chatCollection: AngularFirestoreCollection<any>;
   requestsForHelp: Observable<any[]>;
   request: Observable<any>;
 
@@ -31,7 +31,7 @@ export class CommunityService {
 
   constructor(private afs: AngularFirestore) {
     this.communityProjectsCollection = this.afs.collection('cs');
-    this.helpMessagingCollection = this.afs.collection('messages');
+    this.chatCollection = this.afs.collection('chats');
     this.chatsCollection = this.afs.collection('chats');
    }
 
@@ -53,12 +53,7 @@ export class CommunityService {
       }));  
       return this.communityProjects;
     }
-  
-    moveToBeingHandled(document: string){
-      this.helpMessagingCollection.doc(document).update({
-        needsHelp: false
-      })
-    }
+
 
         //Retrieve the individual project
         getCommunityProject(id: string): Observable<CommunityProject> {
@@ -76,12 +71,12 @@ export class CommunityService {
           return this.project;
         }
 
-            // Get all questions submitted to the platform
-    getAllMessages(): Observable<any[]> {
+            // Get all open conversations with peer mentors
+    getAllChats(): Observable<any[]> {
 
-      this.helpMessagingCollection = this.afs.collection('messages', ref => ref.orderBy('dateSent', 'desc').where("needsHelp", "==", true).where('solved', '==', false));
+      this.chatCollection = this.afs.collection('chats', ref => ref.orderBy('dateSent', 'desc').where('solved', '==', false));
     
-      this.requestsForHelp = this.helpMessagingCollection.snapshotChanges().pipe(map(changes => {
+      this.requestsForHelp = this.chatCollection.snapshotChanges().pipe(map(changes => {
         return changes.map(action => {
           const data = action.payload.doc.data() as any;
           data.id = action.payload.doc.id;
@@ -94,7 +89,7 @@ export class CommunityService {
 
             //Retrieve the individual message
             getChat(id: string): Observable<any> {
-              this.messageDoc = this.afs.doc<any>(`messages/${id}`);
+              this.messageDoc = this.afs.doc<any>(`chats/${id}`);
               this.request = this.messageDoc.snapshotChanges().pipe(map(action => {
                 if(action.payload.exists === false) {
                   return null;
@@ -111,10 +106,10 @@ export class CommunityService {
                        //Respond to chat
             respondToChat(id: string, response: any) {
 
-            // this.chatsCollection = this.afs.collection<any>(`chats/${id}`);
-            this.chatsCollection.doc(id).set(response);
-            return       this.helpMessagingCollection.add(response);
-            
+            // toDo: Handle this logic
+
+             this.chatCollection.add(response);
+             this.chatsCollection.doc(id).set(response);
 
             }
       
