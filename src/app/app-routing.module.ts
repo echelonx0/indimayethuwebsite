@@ -84,7 +84,7 @@ const routes: Routes = [
   { path: "profile", component: ProfileComponent },
   { path: "post/:id", component: ViewPostComponent },
   { path: "blog", component: BlogComponent },
-  { path: "landing", component: LandingComponent },
+  { path: "ysn", component: LandingComponent },
   { path: "privacy", component: PrivacyComponent },
   { path: "", component: IndexComponent },
   { path: "**", redirectTo: "", pathMatch: "full" },
